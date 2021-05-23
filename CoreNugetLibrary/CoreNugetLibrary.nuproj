@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(NuGetAuthoringPath)\NuGet.Packaging.Authoring.props" Condition="Exists('$(NuGetAuthoringPath)\NuGet.Packaging.Authoring.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E503BA16-F063-4C18-82BB-E14C49BBFC7A}</ProjectGuid>
+    <Description>saitgumus Core Library</Description>
+    <PackageId>saitgumus</PackageId>
+    <PackageVersion>1.0.0</PackageVersion>
+    <Authors>saitgumus</Authors>
+    <DevelopmentDependency>false</DevelopmentDependency>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>CoreNugetLibrary</RootNamespace>
+    <UsePartialTypes>false</UsePartialTypes>
+    <AssemblyName>CoreNugetLibrary</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <OutputPath>bin\Debug</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="readme.txt">
+      <IncludeInPackage>true</IncludeInPackage>
+    </None>
+    <None Include="Types\KafkaCommon.cs" />
+    <None Include="Types\UserContract.cs" />
+    <None Include="Types\InformationContract.cs" />
+    <None Include="Types\ParameterContract.cs" />
+    <None Include="Types\OperationClaim.cs" />
+    <None Include="Types\Policies.cs" />
+    <None Include="Types\Common.cs" />
+    <None Include="Types\Abstract\IContract.cs" />
+    <None Include="Types\Abstract\IEntity.cs" />
+    <None Include="Security\Jwt\ITokenHelper.cs" />
+    <None Include="Security\Jwt\TokenOptions.cs" />
+    <None Include="Security\Jwt\JwtHelper.cs" />
+    <None Include="Security\Jwt\AccessToken.cs" />
+    <None Include="Security\Encryption\SigningCredentialHelper.cs" />
+    <None Include="Security\Encryption\SecurityKeyHelper.cs" />
+    <None Include="Security\Hashing\HashingHelper.cs" />
+    <None Include="Response\Response.cs" />
+    <None Include="Response\CoreResult.cs" />
+    <None Include="Response\Result.cs" />
+    <None Include="Request\RequestBase.cs" />
+    <None Include="Infrastructure\Kafka\ProducerWrapper.cs" />
+    <None Include="Infrastructure\Kafka\KafkaProducerHostedService.cs" />
+    <None Include="Infrastructure\Kafka\KafkaConsumerHostedService.cs" />
+    <None Include="Infrastructure\Kafka\ConsumerWrapper.cs" />
+    <None Include="Infrastructure\Information\Mail\MailSender.cs" />
+    <None Include="Infrastructure\Information\Mail\IMailSender.cs" />
+    <None Include="Helper\InformationHelper.cs" />
+    <None Include="Helper\InfrastructureHelper.cs" />
+    <None Include="Helper\ObjectHelper.cs" />
+    <None Include="Helper\ApplicationContext.cs" />
+    <None Include="Helper\DBHelper.cs" />
+    <None Include="Helper\Abstract\IInformationHelper.cs" />
+    <None Include="Extensions\ClaimExtensions.cs" />
+    <None Include="Extensions\ApmanCommonExtensions.cs" />
+    <None Include="Events\LogEvent.cs" />
+    <None Include="DB\IExecuter.cs" />
+    <None Include="DB\ManagerBase.cs" />
+    <None Include="DB\IConnection.cs" />
+    <None Include="DB\IConnectionPool.cs" />
+    <None Include="DB\ISQLDbLayer.cs" />
+    <None Include="DB\Postgre\PostgreExecuter.cs" />
+    <None Include="DB\Mongo\IMongoDatabaseSettings.cs" />
+    <None Include="DB\MSSQL\BusinessServiceBase.cs" />
+    <None Include="DB\MSSQL\SqlExecuteResult.cs" />
+    <None Include="DB\MSSQL\SqlDBLayer.cs" />
+    <None Include="DB\MSSQL\SqlConnectionPool.cs" />
+    <None Include="Cache\Abstract\ICacheService.cs" />
+    <None Include="Cache\Concreate\RedisOptions.cs" />
+    <None Include="Cache\Concreate\RedisCache.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="NuGet.Build.Packaging">
+      <Version>0.2.5-dev.8</Version>
+      <PrivateAssets>All</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="MongoDB.Driver">
+      <Version>2.12.3</Version>
+    </PackageReference>
+      <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="6.8.0" />
+      <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.8.0" />
+      <PackageReference Include="Microsoft.Extensions.Configuration" Version="3.1.9" />
+      <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
+      <PackageReference Include="ServiceStack.Redis" Version="5.9.2" />
+      <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="3.1.9" />
+      <PackageReference Include="kafka-sharp" Version="1.4.3" />
+      <PackageReference Include="Microsoft.AspNetCore.Authorization.Policy" Version="2.2.0" />
+      <PackageReference Include="MailKit" Version="2.9.0" />
+      <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
+      <PackageReference Include="Confluent.Kafka" Version="1.5.3" />
+      <PackageReference Include="Serilog" Version="2.10.0" />
+      <PackageReference Include="Serilog.Sinks.Seq" Version="4.0.0" />
+      <PackageReference Include="Serilog.AspNetCore" Version="3.4.0" />
+      <PackageReference Include="MongoDB.Driver" Version="2.11.5" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.Common.targets" />
+  <Import Project="$(NuGetAuthoringPath)\NuGet.Packaging.Authoring.targets" Condition="Exists('$(NuGetAuthoringPath)\NuGet.Packaging.Authoring.targets')" />
+</Project>
